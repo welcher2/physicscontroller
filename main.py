@@ -13,13 +13,15 @@ class MainWindow(QWidget):
         main_layout = QVBoxLayout()
 
         upper_layout = QHBoxLayout()
-        # Create the Test Case Settings Component Layout
+        # Create the Test Case List Component Layout and Test Case Settings Component Layout
         test_case_component_assembled = self.create_test_case_component()
         test_case_setting_component_assembled = self.create_test_case_setting_component()
+        # Add the Layouts to the upper_layout
+        upper_layout.addLayout(test_case_component_assembled)
+        upper_layout.addLayout(test_case_setting_component_assembled)
 
         # Add the Test Case List and Test Case Settings Component to the main_layout
-        main_layout.addLayout(test_case_component_assembled)
-        main_layout.addLayout(test_case_setting_component_assembled)
+        main_layout.addLayout(upper_layout)
 
         self.setLayout(main_layout)
         self.show()
@@ -46,7 +48,7 @@ class MainWindow(QWidget):
 
         # Create the buttons
         new_btn = QPushButton('Run')
-        load_btn = QPushButton('Load')
+        load_btn = QPushButton('New')
         edit_btn = QPushButton('Edit')
         del_btn = QPushButton('Delete')
         # Add the buttons to the layout
@@ -79,7 +81,7 @@ class MainWindow(QWidget):
 
     def create_test_case_setting_component(self):
         setting_layout = QVBoxLayout()
-        
+
         return setting_layout
 
 if __name__ == '__main__':
@@ -104,4 +106,3 @@ if __name__ == '__main__':
     palette.setColor(QPalette.HighlightedText, Qt.black)
     app.setPalette(palette)
     sys.exit(app.exec_())
-
